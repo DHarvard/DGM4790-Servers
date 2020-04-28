@@ -1,0 +1,33 @@
+datasource db {
+    provider = "postgresql"
+    url = "***"
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+model Ingredients {
+    id String @default(cuid()) @id
+    title String 
+    quantity String
+    type String
+}
+
+model Recipe {
+    id String @default(cuid()) @id
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    title String
+    instructions String[]
+    ingredients Ingredients[]
+    // ingredients String[]
+    imageUrl String
+}
+
+model simpleRecipe {
+    id String @default(cuid()) @id
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    title String
+    ingredients Ingredients[]
+}
